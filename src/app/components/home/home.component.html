@@ -1,0 +1,39 @@
+<div class="box">
+    <div class="form-group">
+    <h4>Enter Git public repo </h4>(Ex:USERNAME/REPOSITORY)
+    <strong *ngIf="error">{{error}}</strong>
+    <input type="text" class="form-control" #f >
+    <br>
+    <button class="btn-primary"  (click)="get(f.value)">Submit Url</button>
+</div>
+</div>
+<div *ngIf="found">
+   
+   <table>
+        <tr>
+          <th>Category</th>
+          <th>Total no</th>
+        </tr>
+        <tr>
+          <td>No of openissues</td>
+          <td>{{totalIssues.count0}}</td>
+         
+        </tr>
+        <tr>
+          <td>open issues (last 24 hours)</td>
+          <td>{{totalIssues.count1}}</td>
+        
+        </tr>
+        <tr>
+          <td>opened more than 24 hours ago but less than 7 days ago</td>
+          <td>{{totalIssues.count2}}</td>
+          
+        </tr>
+        <tr>
+          <td>Number of open issues that were opened more than 7 days ago</td>
+          <td>{{totalIssues.count3}}</td>
+         
+        </tr>
+    
+      </table>
+</div>
