@@ -21,11 +21,11 @@ export class UserService extends BaseService {
     let now = moment().format('YYYY-MM-DD[T]HH:MM');
     let oneDaybefore = moment().subtract(1, 'days').format('YYYY-MM-DD[T]HH:MM');
     let sevenDaybefore = moment().subtract(7, 'days').format('YYYY-MM-DD[T]HH:MM');
-    let url = `https://api.github.com/search/issues?q=repo:`+endpoint+`+state:open`;    
-    let url1 = `https://api.github.com/search/issues?q=repo:`+endpoint+`+state:open+created:${oneDaybefore}..${now}`;
-    let url2 = `https://api.github.com/search/issues?q=repo:`+endpoint+`+state:open+created:${sevenDaybefore}..${oneDaybefore}`;
+    let url = `https://api.github.com/search/issues?q=repo:`+endpoint+`+is:issue+is:open `;    
+    let url1 = `https://api.github.com/search/issues?q=repo:`+endpoint+`+is:issue+is:open +created:${oneDaybefore}..${now}`;
+    let url2 = `https://api.github.com/search/issues?q=repo:`+endpoint+`+is:issue+is:open+created:${sevenDaybefore}..${oneDaybefore}`;
     
-    let url3 = `https://api.github.com/search/issues?q=repo:`+endpoint+`+state:open+created:<${sevenDaybefore}`;
+    let url3 = `https://api.github.com/search/issues?q=repo:`+endpoint+`+is:issue+is:open+created:<${sevenDaybefore}`;
 
     let res1 = this.httpClient.get(url).pipe(map(this.extractData),catchError(this.handleError)); 
     let res2 = this.httpClient.get(url1).pipe(map(this.extractData),catchError(this.handleError));
